@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Hoja de Vida</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e73c3c;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+        
+        header {
+            grid-column: 1 / -1;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        #profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+            border: 5px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        #profile-pic:hover {
+            transform: scale(1.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .sidebar {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .main-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-bar {
+            background-color: #e0e0e0;
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1s ease-out;
+        }
+        
+        .accordion {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .accordion:hover {
+            background-color: #2980b9;
+        }
+        
+        .accordion:after {
+            content: '\02795';
+            font-size: 13px;
+            color: white;
+            float: right;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion.active:after {
+            content: "\2796";
+            transform: rotate(90deg);
+        }
+        
+        .panel {
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .panel-content {
+            padding: 0 18px;
+            background-color: white;
+            transition: opacity 0.5s ease 0.2s;
+            opacity: 0;
+        }
+        
+        .panel.show .panel-content {
+            opacity: 1;
+        }
+        
+        .titles-section {
+            margin-top: 20px;
+        }
+        
+        .title-card {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .title-card:hover {
+            transform: translateX(10px);
+        }
+        
+        .title-card h3 {
+            margin: 0;
+            color: var(--secondary-color);
+        }
+        
+        .title-card p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img id="profile-pic" src="/img/io.png" alt="Foto de perfil">
+            <h1>Sebastian Cardona Usuga </h1>
+            <p>Desarrollador Backend y DBA</p>
+        </header>
+        
+        <aside class="sidebar">
+            <h2>Habilidades</h2>
+            <div class="skill">
+                <p>Base de datos</p>
+                <div class="skill-bar"><div class="skill-level" data-level="80%"></div></div>
+            </div>
+            <div class="skill">
+                <p>JavaScript</p>
+                <div class="skill-bar"><div class="skill-level" data-level="40%"></div></div>
+            </div>
+            <div class="skill">
+                <p>Backend</p>
+                <div class="skill-bar"><div class="skill-level" data-level="70%"></div></div>
+            </div>
+            
+            <h2>Contacto</h2>
+            <p >correo: sebastiancardona@gmail.com</p>
+            <p>telefono/whatsapp: 3178597973</p>
+        </aside>
+        
+        <main class="main-content">
+            <section>
+                <h2>Sobre Mí</h2>
+                <p>solo soy un simple ser humano que le gusta programar Backend y base de datos ya que el frontend no es mi fuerte pero te puedo asegurar un trabajo bueno back end y buen contro y manejo de base de datos, dato curioso de mi es que puedo dar soluciones algo raras pero funcionales a problemas dificiles de resolver o faciles, mi promblema como Desarrollador y dba seria que me estreso con cualquier cosa :)</p>
+            </section>
+            
+            <section class="titles-section">
+                <h2>Títulos y Certificaciones</h2>
+                <h4>no son la gran cosa pero.. son interesantes </h4>
+                <h5>como puedes observar tengo mas cursos en manejo en base de datos MYSQL</h5>
+
+
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN CREACIÓN DE BASES DE DATOS CON MICROSOFT ACCESS</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN DESARROLLO DE APLICACIONES PARA DISPOSITIVOS MOVILES CON PLATAFORMA ANDROID</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN INFORMATICA: MICROSOFT WORD, EXCEL E INTERNET</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>TECNÓLOGO EN ANALISIS Y DESARROLLO DE SOFTWARE.</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN MANEJO INTERMEDIO DE LA HERRAMIENTA DE HOJAS DE CALCULO EXCEL</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN MANEJO BASICO DE LA HERRAMIENTA DE HOJAS DE CALCULO EXCEL</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN CIUDADANIA DIGITAL PARA LA PAZ</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN MANEJO DE NUEVAS TECNOLOGÍAS TICS</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>URSO ESPECIAL EN FUNDAMENTOS DE PROGRAMACION Y ADMINISTRACION DE BASES DE DATOS ORACLE</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN DESARROLLO DE HABILIDADES DIGITALES PARA EXPERIENCIAS SEGURAS EN LINEA	</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN CONSTRUCCION DE BASES DE DATOS CON MYSQL	</h3>
+                    <p></p>
+                </div>
+                <div class="title-card">
+                    <h3>CURSO ESPECIAL EN FUNDAMENTOS BASICOS EN SALUD OCUPACIONAL	</h3>
+                    <p></p>
+                </div>
+            </section>
+            
+            <button class="accordion">Experiencia Laboral</button>
+            <div class="panel">
+                <div class="panel-content">
+                    <h3>Camarero en un evento privado</h3>
+                    <p>trabaje desde las 10 de la noche hasta las 5 de la mañana en un evento privado en barranquilla yo me encargue de llevar la comida y las bebidas que solicitaban  </p>
+
+                    <h3>Domiciliario </h3>
+                    <p>estube trabajando como domiciliario en la tienda de la esquina en vacaniones despues de salir del colegi, no dure mucho pero fue buen trabajo  </p>
+
+                    <h3>proyecto como backend con unos amigos </h3>
+                    <p>me contrataron para arreglar unos problemas con un programa backend, mejora y optimizar su Funcionalidad</p>
+
+                </div>
+            </div>
+            
+            <button class="accordion">Proyectos Destacados</button>
+            <div class="panel">
+                <div class="panel-content">
+                    <h3>R.A.S.C</h3>
+                    <p>cree las funciones basicas del proyecto como el sistema de registro de informacion del proyecto mas en especifico trabaje en el crud del proyecto, diseñe la funcion de notificacion automatica al detectar nuevo reporte de especies a todos los brigadistas activos del SIGA </p>
+                    
+                    <h3>Arreglos backend de un proyecto incognito</h3>
+                    <p>me contactaron para el arreglo y mejora del backend de un proyecto incognito</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Animación para las barras de habilidades
+            setTimeout(() => {
+                document.querySelectorAll('.skill-level').forEach((skill) => {
+                    skill.style.width = skill.getAttribute('data-level');
+                });
+            }, 500);
+
+            // Funcionalidad de acordeón
+            var acc = document.getElementsByClassName("accordion");
+            for (var i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                        panel.classList.remove("show");
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                        setTimeout(() => {
+                            panel.classList.add("show");
+                        }, 300);
+                    }
+                });
+            }
+
+            // Animación de entrada para los elementos
+            const elements = document.querySelectorAll('.container > *, .main-content > *');
+            elements.forEach((el, index) => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(10px)";
+                el.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                setTimeout(() => {
+                    el.style.opacity = "1";
+                    el.style.transform = "translateY(0)";
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
